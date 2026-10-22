@@ -1,0 +1,60 @@
+services:
+  - type: web
+    name: nightscout
+    runtime: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: INSECURE_USE_HTTP
+        value: true
+      - key: HOSTNAME
+        value: "0.0.0.0"
+      - key: MONGODB_URI
+        sync: false
+      - key: API_SECRET
+        sync: false
+      - key: DISPLAY_UNITS
+        sync: false
+      - key: ALARM_HIGH
+        value: "on"
+      - key: ALARM_LOW
+        value: "on"
+      - key: ALARM_URGENT_HIGH
+        value: "on"
+      - key: ALARM_URGENT_LOW
+        value: "on"
+      - key: ALARM_TIMEAGO_URGENT
+        value: "on"
+      - key: ALARM_TIMEAGO_URGENT_MINS
+        value: "30"
+      - key: ALARM_TIMEAGO_WARN
+        value: "on"
+      - key: ALARM_TIMEAGO_WARN_MINS
+        value: "15"
+      - key: ALARM_TYPES
+        value: "simple"
+      - key: BG_HIGH
+        value: "14"
+      - key: BG_TARGET_TOP
+        value: "10"
+      - key: BG_TARGET_BOTTOM
+        value: "3.9"
+      - key: BG_LOW
+        value: "3"
+      - key: CUSTOM_TITLE
+        value: "Nightscout"
+      - key: ENABLE
+        value: "careportal basal dbsize rawbg iob cob bwp cage iage sage boluscalc treatmentnotify profile food bage override speech cors"
+      - key: SHOW_PLUGINS
+        value: "careportal dbsize"
+      - key: SHOW_RAWBG
+        value: "never"
+      - key: NIGHT_MODE
+        value: "off"
+      - key: THEME
+        value: "colors"
+      - key: TIME_FORMAT
+        value: "24"
